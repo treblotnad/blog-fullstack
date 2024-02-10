@@ -4,12 +4,12 @@ const Comment = require("./comment");
 
 User.hasMany(Post, {
   foreginKey: "user_id",
-  onDelete: "NULL",
+  onDelete: "SET NULL",
 });
 
 User.hasMany(Comment, {
   foreginKey: "user_id",
-  onDelete: "NULL",
+  onDelete: "SET NULL",
 });
 
 Post.hasMany(Comment, {
