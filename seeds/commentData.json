@@ -1,0 +1,12 @@
+[
+  {
+    "user_id": 2,
+    "post_id": 1,
+    "comment_text": "Good Post!"
+  },
+  {
+    "user_id": 1,
+    "post_id": 2,
+    "comment_text": "Bad Post!"
+  }
+]
