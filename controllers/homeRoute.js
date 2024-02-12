@@ -1,6 +1,8 @@
 const router = require("express").Router();
+const sequelize = require("../config/connection");
 const { User, Post, Comment } = require("../models");
 const withAuth = require("../utils/auth");
+const { QueryTypes } = require("sequelize");
 
 router.get("/", async (req, res) => {
   try {
@@ -61,15 +63,21 @@ router.get("/post/:id", async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ["userName"],
+          attributes: ["user_name"],
         },
         {
           model: Comment,
-          include: [{ model: User, attributes: ["userName"] }],
+          include: [{ model: User, attributes: ["user_name"] }],
         },
       ],
     });
     const post = postData.get({ plain: true });
+    const commentUserArray = [];
+    for (let i = 0; i < post.comments.length; i++) {
+      commentUserArray.push(post.comments[i].user.user_name);
+      post.comments[i].user = commentUserArray[i];
+    }
+
     res.render("post", {
       ...post,
       logged_in: req.session.logged_in,

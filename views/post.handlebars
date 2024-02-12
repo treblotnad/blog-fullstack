@@ -1,12 +1,12 @@
 <div class="text-center">
   <h2>{{title}}</h2>
   <p>{{post_text}}</p>
-  <p>Created by {{user.userName}} on {{format_date date_created}}</p>
+  <p>Created by {{user.user_name}} on {{format_date date_created}}</p>
   {{#each comments as |comment|}}
     <div>
       <h3>{{comment.comment_text}}</h3>
       {{! Can't pull in name from join, need to review this later }}
-      <p>Posted by X on {{format_date comment.date_created}}</p>
+      <p>Posted by {{comment.user}} on {{format_date comment.date_created}}</p>
     </div>
 
   {{/each}}
