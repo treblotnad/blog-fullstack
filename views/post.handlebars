@@ -1,22 +1,32 @@
-<div class="text-center">
-  <h2>{{title}}</h2>
-  <p>{{post_text}}</p>
-  <p>Created by {{user.user_name}} on {{format_date date_created}}</p>
+<div class="content column is-offset-1 is-offset-1-mobile is-10-mobile is-10">
+  <div class="columns is-flex-direction-column is-5">
+
+<div class="box column ">
+    <h2 class="title is-size-2">{{title}}</h2>
+    <p class="is-size-4">{{post_text}}</p>
+    <p class="has-text-right">Created by {{user.user_name}} on {{format_date date_created}}</p>
+  </div>
+  <h3>Comments:</h3>
+
   {{#each comments as |comment|}}
-    <div>
-      <h3>{{comment.comment_text}}</h3>
+    <div class="box column">
+      <h3 class="is-size-6">{{comment.comment_text}}</h3>
       {{! Can't pull in name from join, need to review this later }}
-      <p>Posted by {{comment.user}} on {{format_date comment.date_created}}</p>
+      <p class="is-size-7 has-text-right">Posted by {{comment.user}} on {{format_date comment.date_created}}</p>
     </div>
 
   {{/each}}
   {{#if logged_in}}
+
+
+  </div>
+  
     <p>
-      <form class="form comment-form" id="comment-form">
+      <form class="form comment-form box" id="comment-form">
 
         <div class="form-group">
-          <label for="comment-text">Comment</label>
-          <input class="form-input" type="text" id="comment-text" />
+          {{!-- <label for="comment-text">Comment</label> --}}
+          <textarea class="textarea has-fixed-size" placeholder="Leave a comment!"  id="comment-text"></textarea>
         </div>
 
         <div class="form-group">

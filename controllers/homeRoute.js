@@ -87,4 +87,31 @@ router.get("/post/:id", async (req, res) => {
   }
 });
 
+router.get("/editpost/:id", withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ["user_name"],
+        },
+      ],
+    });
+    const post = postData.get({ plain: true });
+    const postUser = post.user_id;
+    const reqPostUser = req.session.user_id;
+    if (!(postUser === reqPostUser)) {
+      res.redirect("/dashboard");
+      return;
+    }
+    console.log(post);
+    res.render("editpost", {
+      ...post,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 module.exports = router;
