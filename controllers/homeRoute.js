@@ -104,7 +104,6 @@ router.get("/editpost/:id", withAuth, async (req, res) => {
       res.redirect("/dashboard");
       return;
     }
-    console.log(post);
     res.render("editpost", {
       ...post,
       logged_in: req.session.logged_in,

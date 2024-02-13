@@ -32,6 +32,11 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    edit_flag: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
   },
   {
     sequelize,
