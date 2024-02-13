@@ -25,7 +25,8 @@ Requires node.js
 
 ## Usage
 
-Deployed Link
+Deployed Link:
+https://blog-fullstack-54964de82c42.herokuapp.com/post/1
 
 ## Credits
 
