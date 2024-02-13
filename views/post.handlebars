@@ -4,7 +4,9 @@
 <div class="box column ">
     <h2 class="title is-size-2">{{title}}</h2>
     <p class="is-size-4">{{post_text}}</p>
-    <p class="has-text-right">Created by {{user.user_name}} on {{format_date date_created}}</p>
+    <p class="has-text-right">{{#if
+            edit_flag
+          }}Edited{{else}}Created{{/if}} by {{user.user_name}} on {{format_date date_created}}</p>
   </div>
   <h3>Comments:</h3>
 
